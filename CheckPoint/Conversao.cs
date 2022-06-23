@@ -61,3 +61,22 @@ namespace CheckPoint
     }
 }
 
+
+/*
+ * public string FirstName
+    {
+        get
+        {
+            return firstName;
+        }
+        set
+        {
+            // Criei um validação apenas para demostrar possibilidades de uso de um get/set.
+            if (String.IsNullOrWhiteSpace(value))
+                firstName = String.Empty;
+            else
+                firstName = value.ToUpperInvariant();
+        }
+    }
+
+*/
