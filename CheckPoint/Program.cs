@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            Conversao.Moeda();
             Conversao.MenuInicial();
             
 
