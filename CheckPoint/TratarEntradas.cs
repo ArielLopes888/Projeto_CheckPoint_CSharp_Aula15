@@ -8,28 +8,28 @@ namespace CheckPoint
 {
     public class TratarEntradas
     {
-        public static double PegarEntradaDoubleDoUsuario()
+        public static decimal PegarEntradaDecimalDoUsuario()
         {
             string db = Console.ReadLine();
-            bool valida = ValidarDouble(db);
-            double valor;
+            bool valida = ValidarDecimal(db);
+            decimal valor;
             while (!valida)
             {
                 Console.Write("Tente de novo: ");
                 db = Console.ReadLine();
-                valida = ValidarDouble(db);
+                valida = ValidarDecimal(db);
             }
-            valor = double.Parse(db);
+            valor = decimal.Parse(db);
             return valor;
         }
 
-        private static bool ValidarDouble(string db)
+        private static bool ValidarDecimal(string db)
         {
-            double variavel;
+            decimal variavel;
             bool valida = true;
             try
             {
-                variavel = double.Parse(db);
+                variavel = decimal.Parse(db);
             }
             catch
             {
@@ -48,7 +48,7 @@ namespace CheckPoint
             {
                 Console.Write("Tente de novo: ");
                 db = Console.ReadLine();
-                valida = ValidarDouble(db);
+                valida = ValidarDecimal(db);
             }
             valor = int.Parse(db);
             return valor;
@@ -61,10 +61,14 @@ namespace CheckPoint
             try
             {
                 variavel = int.Parse(db);
+
+                if (variavel < 1 || variavel > 5)
+                    throw new Exception();
+
             }
             catch
             {
-                Console.WriteLine("Por favor, digite um valor válido. O valor inserido deve ser um número real.");
+                Console.WriteLine("Por favor, digite um valor válido. O valor inserido deve ser um número inteiro entre 1 e 5.");
                 valida = false;
             }
             return valida;
