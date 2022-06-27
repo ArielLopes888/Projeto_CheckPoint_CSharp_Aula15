@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CheckPoint
 {
@@ -12,6 +13,7 @@ namespace CheckPoint
         static private decimal valorFinal;
         static private SortedList moedas = new SortedList();
         static private string[] simbolosMoedas = { "$", "EUR", "JPY", "GBP", "R$"};
+        
 
 
         static public void MenuInicial()
@@ -21,11 +23,6 @@ namespace CheckPoint
             {
                 Console.WriteLine($"{i + 1} - {moedas.GetKey(i)}");
             }
-            //Console.WriteLine("\n1 - Dolar");
-            //Console.WriteLine("2 - Euro");
-            //Console.WriteLine("3 - Iene");
-            //Console.WriteLine("4 - Libra");
-            //Console.WriteLine("5 - Real");
             int opcao = TratarEntradas.PegarEntradaIntDoUsuario();
             Console.WriteLine($"Digite o valor em {moedas.GetKey(opcao-1)}:");
             decimal valorRecebido = TratarEntradas.PegarEntradaDecimalDoUsuario();
@@ -38,7 +35,7 @@ namespace CheckPoint
                 if(i!=opcao-1)
                     Console.WriteLine($"{i + 1} - {moedas.GetKey(i)}");
             }
-            opcao = TratarEntradas.PegarEntradaIntDoUsuario();
+            opcao = TratarEntradas.TratarSegundaEntradaInt(opcao);
             valorFinal = ConverterReal(opcao, valorFinal);
             Console.WriteLine($"O valor em {moedas.GetKey(opcao - 1)} é {simbolosMoedas[opcao - 1]} {Math.Round(valorFinal,2)}. ");
             MenuFinal();
@@ -48,13 +45,13 @@ namespace CheckPoint
         static void MenuFinal()
         {
             Console.WriteLine("Deseja fazer nova conversão? 1 - Sim;  9 - Sair");
-            switch(int.Parse(Console.ReadLine()))
+            switch(Console.ReadLine())
             {
-                case 1:
+                case "1":
                     Console.Clear();
                     MenuInicial();
                     break;
-                case 9:
+                case "9":
                     Environment.Exit(0);
                     break;
                 default:
