@@ -48,7 +48,7 @@ namespace CheckPoint
             {
                 Console.Write("Tente de novo: ");
                 db = Console.ReadLine();
-                valida = ValidarDecimal(db);
+                valida = ValidarInt(db);
             }
             valor = int.Parse(db);
             return valor;
