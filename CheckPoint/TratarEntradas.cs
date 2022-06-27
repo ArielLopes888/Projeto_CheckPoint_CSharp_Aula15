@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CheckPoint
 {
@@ -11,6 +12,8 @@ namespace CheckPoint
         public static decimal PegarEntradaDecimalDoUsuario()
         {
             string db = Console.ReadLine();
+            if (db.Contains('.'))
+                db = db.Replace('.', ',');
             bool valida = ValidarDecimal(db);
             decimal valor;
             while (!valida)
@@ -72,6 +75,19 @@ namespace CheckPoint
                 valida = false;
             }
             return valida;
+        }
+
+        public static int TratarSegundaEntradaInt(int opcao)
+        {
+            int input;
+            input = PegarEntradaIntDoUsuario();
+            while (opcao == input)
+            {
+                Console.WriteLine("Digite um dos valores válidos deste menu:");
+                input = PegarEntradaIntDoUsuario();
+            } 
+            return input;
+            
         }
     }
 }
